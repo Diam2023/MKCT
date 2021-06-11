@@ -5,7 +5,7 @@
 /*
 *
 * mikuclub.com web registration date 2015 12 27
-* 16 hex : { 32, 21, 18, 39 }
+* hex : { 32, 21, 18, 39 }
 *
 */
 const char MK_HEADER[4] = { char(32), char(21), char(18), char(39) };
