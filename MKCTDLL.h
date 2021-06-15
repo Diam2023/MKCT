@@ -35,6 +35,13 @@ extern "C" __declspec(dllexport) FileErrEnum _changeHeaderTo(const string& file)
 extern "C" __declspec(dllexport) FileErrEnum _changeHeaderBack(const string& file);
 
 /// <summary>
+/// get file head
+/// </summary>
+/// <param name="file">file path</param>
+/// <returns>a hex head</returns>
+extern "C" __declspec(dllexport) char* _getFileHeader(const string& file);
+
+/// <summary>
 /// from string or char* to hex string
 /// </summary>
 /// <param name="bytes">data</param>
