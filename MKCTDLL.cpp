@@ -69,6 +69,32 @@ char* _getFileHeader(const string& file)
     return _FileHead;
 }
 
+char* _getMKFileHeader(const string& file)
+{
+    // open file
+    _OpenError = fopen_s(&_FileStream, file.c_str(), "rb+");
+    if (_OpenError == 0) {
+        // if stream open
+        if (_FileStream != 0) {
+            // seek file point to last 4 bytes
+            _fseeki64_nolock(_FileStream, -FILE_HEAD_SIZE, SEEK_END);
+
+            // read last 4 bytes to FileHead
+            _fread_nolock_s(_FileHead, sizeof(_FileHead), FILE_HEAD_SIZE, READ_COUNT, _FileStream);
+
+            // from string to 16 hex
+            _bytesToHexString(_FileHead, FILE_HEAD_SIZE);
+        }
+        if (_FileStream != 0) {
+            // close file
+            if (_fclose_nolock(_FileStream) != 0) {
+                _Result = FileErrEnum::CLOSE_ERR;
+            }
+        }
+    }
+    return _FileHead;
+}
+
 FileErrEnum _changeHeaderTo(const string& file)
 {
     // open file
@@ -130,7 +156,6 @@ FileErrEnum _changeHeaderBack(const string& file)
 
             // seek file point to last 4 bytes
             _fseeki64_nolock(_FileStream, -FILE_HEAD_SIZE, SEEK_END);
-            // cout << _ftelli64_nolock(_FileStream) << endl;
 
             // read last 4 bytes to FileHead
             _fread_nolock_s(_FileHead, sizeof(_FileHead), FILE_HEAD_SIZE, READ_COUNT, _FileStream);
