@@ -21,7 +21,7 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MKCTDLL.h">
+    <ClInclude Include="MKCTDLL.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

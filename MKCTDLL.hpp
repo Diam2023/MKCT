@@ -2,29 +2,18 @@
 
 #ifndef MKCTDLL
 
-#include <iostream>
-#include <io.h>
-#include <cstdio>
-#include <stdio.h>
-
-using namespace std;
-
-// define FileErrType
-enum class FileErrEnum
-{
-    NO_ERR,
-    OPEN_ERR,
-    CLOSE_ERR,
-    READ_ERR,
-    WRITE_ERR
-};
+/*
+* author: monoliths
+* date: 2021 6 19
+* version: 1.1
+*/
 
 /// <summary>
 /// main function: copy head append to end, use MK_HEAD replease head
 /// </summary>
 /// <param name="file">file path</param>
 /// <returns>err type</returns>
-extern "C" __declspec(dllexport) FileErrEnum _changeHeaderTo(const string& file);
+extern "C" __declspec(dllexport) errno_t _changeHeaderTo(const wchar_t* file);
 
 /// <summary>
 /// main function: get last 4 bytes data and replease to first,
@@ -32,21 +21,21 @@ extern "C" __declspec(dllexport) FileErrEnum _changeHeaderTo(const string& file)
 /// </summary>
 /// <param name="file">file path</param>
 /// <returns>error type of program</returns>
-extern "C" __declspec(dllexport) FileErrEnum _changeHeaderBack(const string& file);
+extern "C" __declspec(dllexport) errno_t _changeHeaderBack(const wchar_t* file);
 
 /// <summary>
 /// get file head
 /// </summary>
 /// <param name="file">file path</param>
 /// <returns>a hex head</returns>
-extern "C" __declspec(dllexport) char* _getFileHeader(const string& file);
+extern "C" __declspec(dllexport) char* _getFileHeader(const wchar_t* file);
 
 /// <summary>
 /// get mkc file origin head
 /// </summary>
 /// <param name="file"></param>
 /// <returns></returns>
-extern "C" __declspec(dllexport) char* _getMKFileHeader(const string & file);
+extern "C" __declspec(dllexport) char* _getMKFileHeader(const wchar_t* file);
 
 /// <summary>
 /// from string or char* to hex string

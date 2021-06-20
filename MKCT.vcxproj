@@ -156,7 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="MKCTDLL.h" />
+    <ClInclude Include="MKCTDLL.hpp" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
