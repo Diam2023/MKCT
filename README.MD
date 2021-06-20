@@ -1,11 +1,11 @@
 # MKCTDLL
-author: monoliths
+author: monoliths <br>
 this project can change file head to miku web registration date
 
 ## Change header to 20 15 12 27
 mikuclub.com web registration date: December 27, 2019
 
-hex data: { 32, 21, 18, 39 }
+hex data: { 32, 21, 18, 39 }<br>
 use chars: {' ', '', '', '\''}
 
 ## This project contains three functions
@@ -20,7 +20,7 @@ use chars: {' ', '', '', '\''}
 
 - char* _getFileHeader(const wchar_t* file);
 
-return last error value.
+return last error value.<br>
 value: https://docs.microsoft.com/en-us/cpp/c-runtime-library/errno-constants?view=msvc-160
 
 # Version
