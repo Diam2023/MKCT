@@ -8,6 +8,10 @@
 * version: 1.1
 */
 
+
+// mkc type header
+const std::byte MKC_HEADER[4]{ std::byte{0x20}, std::byte{0x15}, std::byte{0x12}, std::byte{0x27} };
+
 /// <summary>
 /// main function: copy head append to end, use MK_HEAD replease head
 /// </summary>
