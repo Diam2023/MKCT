@@ -2,6 +2,12 @@
 author: monoliths <br>
 this project can change file head to miku web registration date
 
+## environment
+### C++ version
+- c++17
+### JAVA version
+- jdk >= 1.8
+
 ## Change header to 20 15 12 27
 mikuclub.com web registration date: December 27, 2019
 
@@ -25,7 +31,9 @@ value: https://docs.microsoft.com/en-us/cpp/c-runtime-library/errno-constants?vi
 
 # Version
 - 1.1
-	- add char* _getMKFileHeader(const wchar_t* file) function;
-	- add char* _getFileHeader(const wchar_t* file);
-	- resolve string to char* codec error
-	- change argvs type char* to wchar_t*, use Unicode file name
+	- added char* _getMKFileHeader(const wchar_t* file) function.
+	- added char* _getFileHeader(const wchar_t* file).
+	- resolve string to char* codec error.
+	- change argvs type char* to wchar_t*, use Unicode file name.
+- 1.2
+  - added java version of MKCT
