@@ -390,3 +390,5 @@ buildNumber.properties
 .factorypath
 .project
 .vscode/
+
+*.zip

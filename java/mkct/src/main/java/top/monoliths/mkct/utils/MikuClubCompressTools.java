@@ -15,7 +15,11 @@ public final class MikuClubCompressTools {
     /**
      * mikuclub.com date 2015 12 27.
      */
-    private static final byte[] MIKUCLUB_HEAD = { 32, 21, 18, 39 };
+    private static final byte[] MIKUCLUB_HEADER = { 32, 21, 18, 39 };
+
+    public static byte[] getMikuclubHeader() {
+        return MIKUCLUB_HEADER;
+    }
 
     /**
      * file origin head data.
@@ -77,7 +81,7 @@ public final class MikuClubCompressTools {
         // skip to file head
         target.seek(0);
         // overwrite head to mikuclub create date
-        target.write(MIKUCLUB_HEAD);
+        target.write(MIKUCLUB_HEADER);
         // skip to file last
         target.seek(length);
         // write origin head
@@ -115,7 +119,7 @@ public final class MikuClubCompressTools {
      * @param src byte data
      * @return {@code String} HEX String
      */
-    private final static String bytesToHexString(byte[] src) {
+    public final static String bytesToHexString(final byte[] src) {
         StringBuilder builder = new StringBuilder();
         if (src == null || src.length <= 0) {
             return null;
@@ -128,7 +132,6 @@ public final class MikuClubCompressTools {
             }
             builder.append(hv);
         }
-        System.out.println(builder.toString());
         return builder.toString();
     }
 
