@@ -26,11 +26,11 @@ value: https://docs.microsoft.com/en-us/cpp/c-runtime-library/errno-constants?vi
 
 ## Version
 - 1.1
- - added char* _getMKFileHeader(const wchar_t* file) function.
- - added char* _getFileHeader(const wchar_t* file).
- - resolve string to char* codec error.
- - change argvs type char* to wchar_t*, use Unicode file name.
+  - added char* _getMKFileHeader(const wchar_t* file) function.
+  - added char* _getFileHeader(const wchar_t* file).
+  - resolve string to char* codec error.
+  - change argvs type char* to wchar_t*, use Unicode file name.
 - 1.2
- - added java version of MKCT
- - added new two function
- - use constexpr to initialize some const data
+  - added java version of MKCT
+  - added new two function
+  - use constexpr to initialize some const data
