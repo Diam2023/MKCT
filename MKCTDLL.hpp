@@ -5,7 +5,8 @@
 /*
 * author: monoliths
 * date: 2021 6 19
-* version: 1.1
+* last change date: 2021 7 30
+* version: 1.2
 */
 
 /// <summary>
