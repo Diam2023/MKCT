@@ -8,10 +8,6 @@
 * version: 1.1
 */
 
-
-// mkc type header
-const std::byte MKC_HEADER[4]{ std::byte{0x20}, std::byte{0x15}, std::byte{0x12}, std::byte{0x27} };
-
 /// <summary>
 /// main function: copy head append to end, use MK_HEAD replease head
 /// </summary>
@@ -47,5 +43,18 @@ extern "C" __declspec(dllexport) char* _getMKFileHeader(const wchar_t* file);
 /// <param name="bytes">data</param>
 /// <param name="bytelength">length</param>
 extern "C" __declspec(dllexport) void _bytesToHexString(char* bytes, int bytelength);
+
+/// <summary>
+/// add bytes to last
+/// only support save over length of 4 bytes to exprence bytes
+/// </summary>
+/// <param name="bytes">data</param>
+extern "C" __declspec(dllexport) errno_t _pushLastBytes(const wchar_t* file, char* bytes);
+
+/// <summary>
+/// return and delete the last of added bytes
+/// </summary>
+/// <returns></returns>
+extern "C" __declspec(dllexport) char* _popLatsBytes(const wchar_t* file);
 
 #endif // !MKCTDLL
