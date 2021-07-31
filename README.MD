@@ -1,16 +1,16 @@
 # MKCTDLL
-author: monoliths <br>
-this project can change file head to miku web registration date
+Author: monoliths <br>
+This project can change file head to miku web registration date
 
 ## Environment
 - C++ version
- - c++17 standard
+ - C++17 standard
 - JAVA version
- - openjdk >= 1.8
+ - Openjdk >= 1.8
 
 ## Change header to 20 15 12 27
-mikuclub.com web registration date: December 27, 2019 <br>
-hex data: { 32, 21, 18, 39 }
+Mikuclub.com web registration date: December 27, 2015 <br>
+Hex data: { 32, 21, 18, 39 }
 
 ## Main function
  - char* _getMKFileHeader(const wchar_t* file)
@@ -21,8 +21,8 @@ hex data: { 32, 21, 18, 39 }
  - errno_t _changeHeaderTo(const wchar_t* file): copy head append to end, use MK_HEAD replease head
  - errno_t _changeHeaderBack(const wchar_t* file): get last 4 bytes data and replease to first, resize to file size - 4 
 
-return last error value.<br>
-value: https://docs.microsoft.com/en-us/cpp/c-runtime-library/errno-constants?view=msvc-160
+Return last error value.<br>
+Value: https://docs.microsoft.com/en-us/cpp/c-runtime-library/errno-constants?view=msvc-160
 
 ## Version
 - 1.1
