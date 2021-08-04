@@ -50,7 +50,7 @@ extern "C" __declspec(dllexport) void _bytesToHexString(char* bytes, int bytelen
 /// only support save over length of 4 bytes to exprence bytes
 /// </summary>
 /// <param name="bytes">data</param>
-extern "C" __declspec(dllexport) errno_t _pushLastBytes(const wchar_t* file, char* bytes);
+extern "C" __declspec(dllexport) errno_t _pushLastBytes(const wchar_t* file, const char* bytes);
 
 /// <summary>
 /// return and delete the last of added bytes

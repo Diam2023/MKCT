@@ -77,7 +77,7 @@ void _bytesToHexString(char* bytes, int bytelength)
     // consult to https://blog.csdn.net/weixin_30861797/article/details/97326458
 }
 
-errno_t _pushLastBytes(const wchar_t* file, char* bytes)
+errno_t _pushLastBytes(const wchar_t* file, const char* bytes)
 {
     // open file
     _ReturnValue = _wfopen_s(&_FileStream, file, BINARY_APPEND_MODE);
