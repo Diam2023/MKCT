@@ -96,10 +96,19 @@ errno_t _pushLastBytes(const wchar_t* file, const char* bytes)
             const char* content_bytes = count.c_str();
 
             // write origin data
-            _fwrite_nolock(bytes, sizeof(content_bytes), DEFAULT_COUNT, _FileStream);
+            _fwrite_nolock(bytes, sizeof(bytes), DEFAULT_COUNT, _FileStream);
+
+            // flush to file
+            _fflush_nolock(_FileStream);
+
+            // seek to last
+            _fseeki64_nolock(_FileStream, DEFAULT_OFFSET, SEEK_END);
 
             // write data size data
             _fwrite_nolock(content_bytes, LAST_DATA_COUNT_SIZE, DEFAULT_COUNT, _FileStream);
+
+            // flush to file
+            _fflush_nolock(_FileStream);
 
             // close all stream
             _fcloseall();
@@ -220,13 +229,13 @@ errno_t _changeHeaderTo(const wchar_t* file)
             _fseeki64_nolock(_FileStream, DEFAULT_OFFSET, SEEK_SET);
 
             // read head to _FileHead
-            _fread_nolock_s(_FileHead, sizeof(_FileHead), FILE_HEAD_SIZE, DEFAULT_COUNT, _FileStream);
+            _fread_nolock_s(_FileHead, FILE_HEAD_SIZE, FILE_HEAD_SIZE, DEFAULT_COUNT, _FileStream);
 
             // seek to first
             _fseeki64_nolock(_FileStream, DEFAULT_OFFSET, SEEK_SET);
 
             // use MK_HEAD replease origin file head
-            _fwrite_nolock(MK_HEADER(), sizeof(MK_HEADER()), DEFAULT_COUNT, _FileStream);
+            _fwrite_nolock(MK_HEADER(), FILE_HEAD_SIZE, DEFAULT_COUNT, _FileStream);
 
             // from std::string to 16 hex
             _bytesToHexString(_FileHead, FILE_HEAD_SIZE);
@@ -237,8 +246,11 @@ errno_t _changeHeaderTo(const wchar_t* file)
             // reopen file use 'ab+' 
             _ReturnValue = _wfreopen_s(&_NewFileStream, file, BINARY_APPEND_MODE, _FileStream);
             if (_ReturnValue == DEFAULT_ERROR_TYPE) {
-                // use MK_HEAD replease origin file head
-                _fwrite_nolock(_FileHead, sizeof(_FileHead), DEFAULT_COUNT, _FileStream);
+              // seek to end
+              _fseeki64_nolock(_FileStream, DEFAULT_OFFSET, SEEK_END);
+
+              // use MK_HEAD replease origin file head
+                _fwrite_nolock(_FileHead, FILE_HEAD_SIZE, DEFAULT_COUNT, _FileStream);
             }
             else {
                 _Result = _ReturnValue;
@@ -274,7 +286,7 @@ errno_t _changeHeaderBack(const wchar_t* file)
             _fseeki64_nolock(_FileStream, -FILE_HEAD_SIZE, SEEK_END);
 
             // read last 4 bytes to FileHead
-            _fread_nolock_s(_FileHead, sizeof(_FileHead), FILE_HEAD_SIZE, DEFAULT_COUNT, _FileStream);
+            _fread_nolock_s(_FileHead, FILE_HEAD_SIZE, FILE_HEAD_SIZE, DEFAULT_COUNT, _FileStream);
 
             // from std::string to 16 hex
             _bytesToHexString(_FileHead, FILE_HEAD_SIZE);
